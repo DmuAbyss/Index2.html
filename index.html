@@ -5,120 +5,289 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Daniela Breniz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;margin:0;padding:0;}
   body{
-    min-height:100vh;
     font-family:'Poppins', sans-serif;
-    background:linear-gradient(160deg,#ff2e63 0%,#c724b1 45%,#6a0dad 100%);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:24px;
-  }
-  .card{
-    width:100%;
-    max-width:400px;
     background:#fff;
-    border-radius:24px;
-    overflow:hidden;
-    text-align:center;
-    box-shadow:0 20px 60px rgba(0,0,0,0.35);
-  }
-  .cover{
-    width:100%;
-    height:140px;
-    object-fit:cover;
-    display:block;
-    background:linear-gradient(135deg,#ff2e63,#6a0dad);
-  }
-  .content{
-    padding:0 28px 32px;
-  }
-  .avatar{
-    width:96px;
-    height:96px;
-    border-radius:50%;
-    margin:-48px auto 12px;
-    object-fit:cover;
-    display:block;
-    border:4px solid #fff;
-    box-shadow:0 0 0 3px #ff2e63;
-    background:#eee;
-  }
-  h1{
-    font-size:22px;
-    font-weight:800;
     color:#1a1a1a;
+    padding-bottom:96px;
   }
-  .badge{
+  a{ text-decoration:none; color:inherit; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    width:100%;
+    height:62vh;
+    min-height:380px;
+    max-height:520px;
+    overflow:hidden;
+  }
+  .hero img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.75) 100%);
+  }
+  .hero-content{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    padding:0 24px 22px;
+    z-index:2;
+    color:#fff;
+  }
+  .pill{
     display:inline-flex;
     align-items:center;
     gap:6px;
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,0.3);
+    font-size:11.5px;
+    font-weight:600;
+    padding:6px 12px;
+    border-radius:999px;
+    margin-bottom:10px;
+  }
+  .hero h1{
+    font-size:28px;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    gap:7px;
+  }
+  .hero h1 .check{
+    width:19px; height:19px;
+    background:linear-gradient(135deg,#ff8c32,#ed3f26);
+    border-radius:50%;
+    display:inline-flex;align-items:center;justify-content:center;
+    font-size:11px;
+  }
+  .hero p{
     margin-top:6px;
-    background:#ffe4ec;
-    color:#ff2e63;
+    font-size:14px;
+    font-weight:400;
+    color:rgba(255,255,255,0.9);
+    max-width:320px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ padding:26px 20px 0; max-width:460px; margin:0 auto; }
+
+  .section-label{
     font-size:12px;
     font-weight:700;
-    padding:5px 12px;
-    border-radius:999px;
-  }
-  p.bio{
-    margin-top:14px;
-    color:#555;
-    font-size:14px;
-    line-height:1.5;
-  }
-  .stats{
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:#ed3f26;
     display:flex;
-    justify-content:center;
-    gap:24px;
-    margin-top:20px;
-    padding:16px 0;
-    border-top:1px solid #f0f0f0;
-    border-bottom:1px solid #f0f0f0;
+    align-items:center;
+    gap:8px;
+    margin-bottom:14px;
   }
-  .stat{ text-align:center; }
-  .stat b{ display:block; font-size:16px; color:#1a1a1a; }
-  .stat span{ font-size:11px; color:#999; }
-  .cta{
+  .section-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:#ffe1cf;
+  }
+
+  /* teaser grid */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-bottom:8px;
+  }
+  .tile{
+    position:relative;
+    aspect-ratio:1;
+    border-radius:14px;
+    overflow:hidden;
     display:block;
-    margin-top:24px;
-    background:linear-gradient(135deg,#ff2e63,#c724b1);
+  }
+  .tile .bg{
+    position:absolute;
+    inset:-12px;
+    filter:blur(12px);
+  }
+  .tile:nth-child(1) .bg{ background:linear-gradient(135deg,#ff8c32,#ed3f26); }
+  .tile:nth-child(2) .bg{ background:linear-gradient(135deg,#a83279,#3a1c71); }
+  .tile:nth-child(3) .bg{ background:linear-gradient(135deg,#ff3d68,#ff8c32); }
+  .tile:nth-child(4) .bg{ background:linear-gradient(135deg,#3a1c71,#6a0dad); }
+  .tile:nth-child(5) .bg{ background:linear-gradient(135deg,#ed3f26,#a83279); }
+  .tile:nth-child(6) .bg{ background:linear-gradient(135deg,#ff8c32,#6a0dad); }
+  .tile .overlay{
+    position:absolute; inset:0;
+    background:rgba(0,0,0,0.28);
+    display:flex;
+    align-items:center;
+    justify-content:center;
     color:#fff;
-    text-decoration:none;
+    font-size:20px;
+  }
+  .grid-note{
+    text-align:center;
+    font-size:12px;
+    color:#aaa;
+    margin-bottom:30px;
+  }
+
+  /* perks */
+  .perks{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-bottom:30px;
+  }
+  .perk{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:#fff8f4;
+    border:1px solid #ffe9d9;
+    border-radius:14px;
+    padding:14px 16px;
+    font-size:13.5px;
+    font-weight:500;
+    color:#333;
+  }
+  .perk .ico{
+    width:34px; height:34px;
+    flex-shrink:0;
+    border-radius:10px;
+    background:linear-gradient(135deg,#ff8c32,#ed3f26);
+    display:flex;align-items:center;justify-content:center;
+    font-size:16px;
+  }
+
+  /* pricing */
+  .plans{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-bottom:30px;
+  }
+  .plan{
+    border:1.5px solid #ffe1cf;
+    border-radius:14px;
+    padding:14px 8px;
+    text-align:center;
+  }
+  .plan.featured{
+    border-color:#ed3f26;
+    background:linear-gradient(180deg,#fff8f4,#fff);
+    position:relative;
+  }
+  .plan.featured .tag{
+    position:absolute;
+    top:-9px; left:50%;
+    transform:translateX(-50%);
+    background:linear-gradient(135deg,#ff8c32,#ed3f26);
+    color:#fff;
+    font-size:9px;
+    font-weight:700;
+    padding:3px 8px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .plan .name{ font-size:11.5px; font-weight:600; color:#666; }
+  .plan .price{ font-size:16px; font-weight:800; color:#1a1a1a; margin-top:4px; }
+  .plan .price small{ font-size:10px; font-weight:500; color:#999; }
+
+  /* ---------- STICKY CTA ---------- */
+  .sticky-cta{
+    position:fixed;
+    left:0; right:0; bottom:0;
+    z-index:10;
+    background:#fff;
+    padding:12px 20px calc(14px + env(safe-area-inset-bottom));
+    box-shadow:0 -8px 24px rgba(0,0,0,0.08);
+  }
+  .cta-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    background:linear-gradient(135deg,#ff8c32,#ed3f26);
+    color:#fff;
     font-weight:700;
     font-size:15px;
     padding:16px;
     border-radius:14px;
-    box-shadow:0 10px 24px rgba(255,46,99,0.4);
-    transition:transform .2s ease;
+    box-shadow:0 12px 24px -6px rgba(237,63,38,0.55);
   }
-  .cta:active{ transform:scale(0.97); }
-  .note{
-    margin-top:14px;
-    font-size:11px;
-    color:#aaa;
+  .cta-sub{
+    text-align:center;
+    font-size:10.5px;
+    color:#bbb;
+    margin-top:7px;
   }
 </style>
 </head>
 <body>
-<div class="card">
-  <img class="cover" src="capa.jpg" alt="capa">
-  <img class="avatar" src="foto.jpg" alt="Daniela Breniz">
-  <div class="content">
-  <h1>Daniela Breniz</h1>
-  <div class="badge">🔒 Conteúdo Exclusivo</div>
-  <p class="bio">Uma Gótica que ama te deixar louco😈<br>Aqui você vai encontrar meu lado mais obscuro🤭❤️‍🔥</p>
-  <div class="stats">
-    <div class="stat"><b>+1200</b><span>fotos e vídeos</span></div>
-    <div class="stat"><b>Diária</b><span>lives privadas</span></div>
-    <div class="stat"><b>Mensal</b><span>rifa exclusiva</span></div>
-  </div>
-  <a class="cta" href="https://t.me/+UesbadYN-GM0NmFh" target="_blank" rel="noopener">Acessar conteúdo no Telegram</a>
-  <div class="note">acesso imediato após entrar</div>
+
+<div class="hero">
+  <img src="foto.jpg" alt="Daniela Breniz">
+  <div class="hero-content">
+    <div class="pill">🔒 Conteúdo exclusivo 18+</div>
+    <h1>Daniela Breniz <span class="check">✓</span></h1>
+    <p>Uma Gótica que ama te deixar louco😈 Aqui você vai encontrar meu lado mais obscuro🤭❤️‍🔥</p>
   </div>
 </div>
+
+<main>
+
+  <div class="section-label">prévia bloqueada</div>
+  <div class="grid">
+    <a class="tile" href="https://t.me/+UesbadYN-GM0NmFh"><div class="bg"></div><div class="overlay">🔒</div></a>
+    <a class="tile" href="https://t.me/+UesbadYN-GM0NmFh"><div class="bg"></div><div class="overlay">🔒</div></a>
+    <a class="tile" href="https://t.me/+UesbadYN-GM0NmFh"><div class="bg"></div><div class="overlay">🔒</div></a>
+    <a class="tile" href="https://t.me/+UesbadYN-GM0NmFh"><div class="bg"></div><div class="overlay">🔒</div></a>
+    <a class="tile" href="https://t.me/+UesbadYN-GM0NmFh"><div class="bg"></div><div class="overlay">🔒</div></a>
+    <a class="tile" href="https://t.me/+UesbadYN-GM0NmFh"><div class="bg"></div><div class="overlay">🔒</div></a>
+  </div>
+  <div class="grid-note">toque em qualquer prévia pra desbloquear</div>
+
+  <div class="section-label">o que tem lá dentro</div>
+  <div class="perks">
+    <div class="perk"><span class="ico">🎥</span>+1200 vídeos e fotos já liberadas</div>
+    <div class="perk"><span class="ico">🔴</span>Lives privadas todas as noites</div>
+    <div class="perk"><span class="ico">⭐</span>Rifa mensal: calcinhas que usei e chance de me encontrar🔥</div>
+  </div>
+
+  <div class="section-label">planos</div>
+  <div class="plans">
+    <div class="plan">
+      <div class="name">SEMANAL</div>
+      <div class="price">9,87<small>/7d</small></div>
+    </div>
+    <div class="plan featured">
+      <div class="tag">MAIS PEDIDO</div>
+      <div class="name">QUINZENAL</div>
+      <div class="price">13,97<small>/15d</small></div>
+    </div>
+    <div class="plan">
+      <div class="name">MENSAL</div>
+      <div class="price">18,97<small>/30d</small></div>
+    </div>
+  </div>
+
+</main>
+
+<div class="sticky-cta">
+  <a class="cta-btn" href="https://t.me/+UesbadYN-GM0NmFh" target="_blank" rel="noopener">🔓 Acessar conteúdo completo</a>
+  <div class="cta-sub">vagas limitadas • acesso imediato pelo Telegram</div>
+</div>
+
 </body>
 </html>
